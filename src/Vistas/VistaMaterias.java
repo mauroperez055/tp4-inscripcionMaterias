@@ -2,12 +2,16 @@
 package Vistas;
 
 import Clases.Alumno;
+import Clases.Materia;
 import java.util.HashSet;
 
 public class VistaMaterias extends javax.swing.JInternalFrame {
 
-    public VistaMaterias() {
+    private final HashSet<Materia> materias;
+
+    public VistaMaterias(HashSet<Materia> materias) {
         initComponents();
+        this.materias = materias;
     }
 
     @SuppressWarnings("unchecked")

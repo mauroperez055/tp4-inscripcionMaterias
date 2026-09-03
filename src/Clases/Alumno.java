@@ -2,6 +2,7 @@
 package Clases;
 
 import java.util.HashSet;
+import java.util.Objects;
 
 public class Alumno {
     private int legajo;
@@ -51,4 +52,33 @@ public class Alumno {
         System.out.print("Cantidad de materias de " + apellido + ": ");
         return materiasInscripto.size();
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Alumno otro = (Alumno) obj;
+
+        return legajo == otro.legajo
+                && Objects.equals(apellido, otro.apellido)
+                && Objects.equals(nombre, otro.nombre);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(legajo, apellido, nombre);
+    }
+
+    @Override
+    public String toString() {
+        return "Alumno{" + "legajo=" + legajo + ", apellido=" + apellido + ", nombre=" + nombre + ", materiasInscripto=" + materiasInscripto + '}';
+    }
+    
 }

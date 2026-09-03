@@ -8,8 +8,8 @@ import java.util.HashSet;
 public class VistaPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaPrincipal.class.getName());
-    private static final HashSet<Alumno> alumnos = new HashSet<>();
-    private static final HashSet<Materia> materias = new HashSet<>();
+    private static HashSet<Alumno> alumnos = new HashSet<>();
+    private static HashSet<Materia> materias = new HashSet<>();
 
     public VistaPrincipal() {
         initComponents();
@@ -137,7 +137,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        VistaMaterias vistaMat = new VistaMaterias();
+        VistaMaterias vistaMat = new VistaMaterias(materias);
         System.out.println(vistaMat);
         vistaMat.setVisible(true);
         escritorio.add(vistaMat);
@@ -148,7 +148,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        VistaInscripcion vistaIns = new VistaInscripcion(alumnos);
+        VistaInscripcion vistaIns = new VistaInscripcion(alumnos, materias);
         System.out.println(vistaIns);
         vistaIns.setVisible(true);
         escritorio.add(vistaIns);

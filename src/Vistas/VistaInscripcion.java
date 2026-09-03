@@ -2,11 +2,12 @@
 package Vistas;
 
 import Clases.Alumno;
+import Clases.Materia;
 import java.util.HashSet;
 
 public class VistaInscripcion extends javax.swing.JInternalFrame {
 
-    public VistaInscripcion(HashSet<Alumno> alumnos) {
+    public VistaInscripcion(HashSet<Alumno> alumnos, HashSet<Materia> materias) {
         initComponents();
     }
 

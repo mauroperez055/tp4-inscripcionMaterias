@@ -3,11 +3,14 @@ package Vistas;
 
 import Clases.Alumno;
 import java.util.HashSet;
+import javax.swing.JOptionPane;
 
 public class VistaAlumnos extends javax.swing.JInternalFrame {
 
+    private HashSet<Alumno> alumnos;
     public VistaAlumnos(HashSet<Alumno> alumnos) {
         initComponents();
+        this.alumnos = alumnos;
     }
 
     @SuppressWarnings("unchecked")
@@ -43,9 +46,19 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
 
         btnNuevo.setForeground(new java.awt.Color(0, 102, 204));
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setForeground(new java.awt.Color(0, 102, 204));
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setForeground(new java.awt.Color(0, 102, 204));
         btnSalir.setText("Salir");
@@ -117,6 +130,29 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        int legajo = Integer.parseInt(txtLegajo.getText());
+        String apellido = txtApellido.getText().toUpperCase();
+        String nombre = txtNombre.getText().toUpperCase();
+        
+        Alumno alumno = new Alumno(legajo, apellido, nombre);
+        System.out.println(alumno.toString());
+        if (alumnos.add(alumno)) {
+            JOptionPane.showMessageDialog(this, "Alumno creado exitosamente!", "EXCELENTE!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "El alumno ya existe!", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+        }
+        System.out.println(alumnos.size());
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+        txtLegajo.setText("");
+        txtApellido.setText("");
+        txtNombre.setText("");
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
