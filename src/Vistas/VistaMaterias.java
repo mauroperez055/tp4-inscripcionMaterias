@@ -4,10 +4,11 @@ package Vistas;
 import Clases.Alumno;
 import Clases.Materia;
 import java.util.HashSet;
+import javax.swing.JOptionPane;
 
 public class VistaMaterias extends javax.swing.JInternalFrame {
 
-    private final HashSet<Materia> materias;
+    private HashSet<Materia> materias;
 
     public VistaMaterias(HashSet<Materia> materias) {
         initComponents();
@@ -47,12 +48,27 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
 
         btnSalir.setForeground(new java.awt.Color(0, 102, 204));
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setForeground(new java.awt.Color(0, 102, 204));
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnNuevo.setForeground(new java.awt.Color(0, 102, 204));
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,6 +125,35 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        int codigo = Integer.parseInt(txtCodigoMat.getText());
+        String nombre = txtNombreMat.getText().toUpperCase();
+        int anio = Integer.parseInt(txtAnioMat.getText());
+        
+        Materia materia = new Materia(codigo, nombre, anio);
+        System.out.println(materia.toString());
+        
+        if (materias.add(materia)) {
+            JOptionPane.showMessageDialog(this, "Materia creada exitosamente!", "EXCELENTE!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "La materia ya existe!", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+        }
+        System.out.println("Materias: " + materias.size());
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+        txtCodigoMat.setText("");
+        txtNombreMat.setText("");
+        txtAnioMat.setText("");
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

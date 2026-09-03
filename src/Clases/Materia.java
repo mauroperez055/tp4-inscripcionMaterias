@@ -1,6 +1,8 @@
 
 package Clases;
 
+import java.util.Objects;
+
 public class Materia {
     private int idMateria;
     private String nombre;
@@ -36,4 +38,32 @@ public class Materia {
         this.anio = anio;
     }
     
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Materia otra = (Materia) obj;
+
+        return idMateria == otra.idMateria
+                && Objects.equals(nombre, otra.nombre)
+                && Objects.equals(anio, otra.anio);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(idMateria, nombre, anio);
+    }
+
+    @Override
+    public String toString() {
+        return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anio=" + anio + '}';
+    }
+
 }
