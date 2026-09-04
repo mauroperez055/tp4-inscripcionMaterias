@@ -13,7 +13,8 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
     
     public VistaInscripcion(HashSet<Alumno> alumnos, HashSet<Materia> materias) {
         initComponents();
-        this.materias = new HashSet<>();
+        this.materias = materias;
+        this.alumnos = alumnos;
         
         for (Materia mat: materias) {
             cboMaterias.addItem(mat.getNombre());
@@ -22,6 +23,7 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
         for (Alumno alu: alumnos) {
             cboAlumnos.addItem(alu.getApellido() + " " + alu.getNombre());
         }
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -135,7 +137,34 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
             return;
         }
         
-        JOptionPane.showMessageDialog(this, "Inscripción realizada correctamente!", "Excelente!", JOptionPane.INFORMATION_MESSAGE);
+        String materiaItem = cboMaterias.getSelectedItem().toString();
+        String alumnoItem = cboAlumnos.getSelectedItem().toString();
+        
+        Materia materia = null;
+        
+        for (Materia mat: materias) {
+            if (mat.getNombre().equals(materiaItem)) {
+                materia = mat;
+                break;
+            }
+        }
+        
+        Alumno alumno = null;
+        
+        for (Alumno alu: alumnos) {
+            String nombreCompleto = alu.getApellido() + " " + alu.getNombre();
+            if (nombreCompleto.equals(alumnoItem)) {
+                alumno = alu;
+                break;
+            }
+        }
+        
+        if (materia != null && alumno != null) {
+            alumno.agregarMateria(materia);
+            JOptionPane.showMessageDialog(this, "Inscripción realizada correctamente!", "Excelente!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        System.out.println("Materias de " + alumno.getApellido() + " " + alumno.getNombre() + ": " + alumno.getMateriasInscripto());
     }//GEN-LAST:event_btnInscribirActionPerformed
 
 
