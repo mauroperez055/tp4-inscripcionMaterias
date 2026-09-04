@@ -139,17 +139,28 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
             return;
         }
         
-        int legajo = Integer.parseInt(txtLegajo.getText().trim());
-        String apellido = txtApellido.getText().trim().toUpperCase();
-        String nombre = txtNombre.getText().trim().toUpperCase();
-        
-        Alumno alumno = new Alumno(legajo, apellido, nombre);
-        System.out.println(alumno.toString());
-        if (alumnos.add(alumno)) {
-            JOptionPane.showMessageDialog(this, "Alumno creado exitosamente!", "EXCELENTE!", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "El alumno ya existe!", "ATENCION!", JOptionPane.WARNING_MESSAGE);
-        }
+        try {
+            int legajo = Integer.parseInt(txtLegajo.getText().trim());
+            String apellido = txtApellido.getText().trim().toUpperCase();
+            String nombre = txtNombre.getText().trim().toUpperCase();
+            
+            if (!apellido.matches("^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$") || !nombre.matches("^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$")) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un apellido y/o nombre válido", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            Alumno alumno = new Alumno(legajo, apellido, nombre);
+            System.out.println(alumno.toString());
+
+            if (alumnos.add(alumno)) {
+                JOptionPane.showMessageDialog(this, "Alumno creado exitosamente!", "EXCELENTE!", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "El alumno ya existe!", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número de legajo válido", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+        } 
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed

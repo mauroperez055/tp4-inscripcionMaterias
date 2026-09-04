@@ -133,20 +133,30 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
             return;
         }
         
-        
-        int codigo = Integer.parseInt(txtCodigoMat.getText());
-        String nombre = txtNombreMat.getText().toUpperCase();
-        int anio = Integer.parseInt(txtAnioMat.getText());
-        
-        Materia materia = new Materia(codigo, nombre, anio);
-        System.out.println(materia.toString());
-        
-        if (materias.add(materia)) {
-            JOptionPane.showMessageDialog(this, "Materia creada exitosamente!", "EXCELENTE!", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "La materia ya existe!", "ATENCION!", JOptionPane.WARNING_MESSAGE);
-        }
-        return;
+        try {
+            int codigo = Integer.parseInt(txtCodigoMat.getText());
+            String nombre = txtNombreMat.getText().toUpperCase();
+            int anio = Integer.parseInt(txtAnioMat.getText());
+            
+            if (!nombre.matches("^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$")) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar un nombre de materia válido", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            Materia materia = new Materia(codigo, nombre, anio);
+            System.out.println(materia.toString());
+
+            if (materias.add(materia)) {
+                JOptionPane.showMessageDialog(this, "Materia creada exitosamente!", "EXCELENTE!", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "La materia ya existe!", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+            }
+            return;
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código/año válido", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+        } 
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
