@@ -128,6 +128,12 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        if (txtCodigoMat.getText().trim().isEmpty() || txtNombreMat.getText().trim().isEmpty() || txtAnioMat.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO DEBEN QUEDAR CAMPOS VACIOS!", "ATENCION", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        
         int codigo = Integer.parseInt(txtCodigoMat.getText());
         String nombre = txtNombreMat.getText().toUpperCase();
         int anio = Integer.parseInt(txtAnioMat.getText());
@@ -152,7 +158,7 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
 

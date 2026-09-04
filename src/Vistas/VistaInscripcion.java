@@ -125,11 +125,16 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirActionPerformed
         // TODO add your handling code here:
+        if (cboMaterias.getSelectedItem().equals("-") || cboAlumnos.getSelectedItem().equals("-")) {
+            JOptionPane.showMessageDialog(this, "NO DEBEN QUEDAR CAMPOS VACIOS!", "ATENCION", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         JOptionPane.showMessageDialog(this, "Inscripción realizada correctamente!", "EXCELENTE!", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnInscribirActionPerformed
 

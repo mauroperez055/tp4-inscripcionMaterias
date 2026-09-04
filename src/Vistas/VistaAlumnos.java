@@ -129,14 +129,19 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        int legajo = Integer.parseInt(txtLegajo.getText());
-        String apellido = txtApellido.getText().toUpperCase();
-        String nombre = txtNombre.getText().toUpperCase();
+        if (txtLegajo.getText().trim().isEmpty() || txtApellido.getText().trim().isEmpty() || txtNombre.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "NO DEBEN QUEDAR CAMPOS VACIOS!", "ATENCION", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int legajo = Integer.parseInt(txtLegajo.getText().trim());
+        String apellido = txtApellido.getText().trim().toUpperCase();
+        String nombre = txtNombre.getText().trim().toUpperCase();
         
         Alumno alumno = new Alumno(legajo, apellido, nombre);
         System.out.println(alumno.toString());
