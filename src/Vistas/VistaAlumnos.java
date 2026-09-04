@@ -135,7 +135,7 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         if (txtLegajo.getText().trim().isEmpty() || txtApellido.getText().trim().isEmpty() || txtNombre.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "NO DEBEN QUEDAR CAMPOS VACIOS!", "ATENCION", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No deben quedar campos vacíos!", "Atención!", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
@@ -145,7 +145,7 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
             String nombre = txtNombre.getText().trim().toUpperCase();
             
             if (!apellido.matches("^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$") || !nombre.matches("^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$")) {
-                JOptionPane.showMessageDialog(this, "Debe ingresar un apellido y/o nombre válido", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Debe ingresar un apellido y/o nombre válido", "Atención!", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
@@ -153,12 +153,12 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
             System.out.println(alumno.toString());
 
             if (alumnos.add(alumno)) {
-                JOptionPane.showMessageDialog(this, "Alumno creado exitosamente!", "EXCELENTE!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Alumno creado exitosamente!", "Excelente!", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "El alumno ya existe!", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "El alumno ya existe!", "Atención!", JOptionPane.WARNING_MESSAGE);
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un número de legajo válido", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número de legajo válido", "Atención!", JOptionPane.WARNING_MESSAGE);
         } 
 
     }//GEN-LAST:event_btnGuardarActionPerformed

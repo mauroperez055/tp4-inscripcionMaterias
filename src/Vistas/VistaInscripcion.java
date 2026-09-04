@@ -131,11 +131,11 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
     private void btnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirActionPerformed
         // TODO add your handling code here:
         if (cboMaterias.getSelectedItem().equals("-") || cboAlumnos.getSelectedItem().equals("-")) {
-            JOptionPane.showMessageDialog(this, "NO DEBEN QUEDAR CAMPOS VACIOS!", "ATENCION", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No deben quedar campos vacíos!", "Atención!", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        JOptionPane.showMessageDialog(this, "Inscripción realizada correctamente!", "EXCELENTE!", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Inscripción realizada correctamente!", "Excelente!", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnInscribirActionPerformed
 
 

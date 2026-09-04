@@ -129,7 +129,7 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         if (txtCodigoMat.getText().trim().isEmpty() || txtNombreMat.getText().trim().isEmpty() || txtAnioMat.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "NO DEBEN QUEDAR CAMPOS VACIOS!", "ATENCION", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No deben quedar campos vacíos!", "Atención!", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
@@ -139,7 +139,7 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
             int anio = Integer.parseInt(txtAnioMat.getText());
             
             if (!nombre.matches("^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$")) {
-                JOptionPane.showMessageDialog(this, "Debe ingresar un nombre de materia válido", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Debe ingresar un nombre de materia válido", "Atención!", JOptionPane.WARNING_MESSAGE);
                 return;
             }
             
@@ -147,14 +147,14 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
             System.out.println(materia.toString());
 
             if (materias.add(materia)) {
-                JOptionPane.showMessageDialog(this, "Materia creada exitosamente!", "EXCELENTE!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Materia creada exitosamente!", "Excelente!", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "La materia ya existe!", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "La materia ya existe!", "Atención!", JOptionPane.WARNING_MESSAGE);
             }
             return;
             
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un código/año válido", "ATENCION!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Debe ingresar un código/año válido", "Atención!", JOptionPane.WARNING_MESSAGE);
         } 
 
     }//GEN-LAST:event_btnGuardarActionPerformed
