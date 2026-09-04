@@ -140,7 +140,7 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "La materia ya existe!", "ATENCION!", JOptionPane.WARNING_MESSAGE);
         }
-        System.out.println("Materias: " + materias.size());
+        return;
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed

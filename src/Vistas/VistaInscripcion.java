@@ -4,11 +4,24 @@ package Vistas;
 import Clases.Alumno;
 import Clases.Materia;
 import java.util.HashSet;
+import javax.swing.JOptionPane;
 
 public class VistaInscripcion extends javax.swing.JInternalFrame {
 
+    private HashSet<Materia> materias;
+    private HashSet<Alumno> alumnos;
+    
     public VistaInscripcion(HashSet<Alumno> alumnos, HashSet<Materia> materias) {
         initComponents();
+        this.materias = new HashSet<>();
+        
+        for (Materia mat: materias) {
+            cboMaterias.addItem(mat.getNombre());
+        }
+        
+        for (Alumno alu: alumnos) {
+            cboAlumnos.addItem(alu.getApellido() + " " + alu.getNombre());
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -35,14 +48,17 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
         lblEleccionAlu.setForeground(new java.awt.Color(0, 102, 204));
         lblEleccionAlu.setText("ELIJA UN ALUMNO:");
 
-        cboMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cboMaterias.setSelectedIndex(-1);
+        cboMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
-        cboAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cboAlumnos.setSelectedIndex(-1);
+        cboAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
         btnInscribir.setForeground(new java.awt.Color(0, 102, 204));
         btnInscribir.setText("Inscribir");
+        btnInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInscribirActionPerformed(evt);
+            }
+        });
 
         btnSalir.setForeground(new java.awt.Color(0, 102, 204));
         btnSalir.setText("Salir");
@@ -111,6 +127,11 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Inscripción realizada correctamente!", "EXCELENTE!", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnInscribirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

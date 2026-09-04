@@ -145,7 +145,6 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(this, "El alumno ya existe!", "ATENCION!", JOptionPane.WARNING_MESSAGE);
         }
-        System.out.println("Alumnos: " + alumnos.size());
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
